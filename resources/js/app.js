@@ -38,6 +38,7 @@ Vue.use(VueAxios, axios)
 import App from './components/App'
 import Booklist from './components/Booklist'
 import Add from './components/Add'
+import Edit from './components/Edit'
 
 const router = new VueRouter({
     mode: 'history',
@@ -52,6 +53,11 @@ const router = new VueRouter({
             name: 'add',
             component: Add
         },
+        {
+            path: '/edit/:id',
+            name: 'edit',
+            component: Edit
+        }
     ],
 });
 

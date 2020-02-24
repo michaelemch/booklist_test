@@ -3,8 +3,9 @@
         <h1 class="pl-5">Reading List </h1>
 
         <p class="pl-5">
-            <router-link :to="{ name: 'booklist' }">Home</router-link> |
-            <router-link :to="{ name: 'add' }">Add Book</router-link>
+            <router-link :to="{ name: 'booklist' }">Home</router-link> 
+            <span class="pl-5"><router-link :to="{ name: 'add' }">Add Book</router-link></span>
+            <span class="pl-5"><a href="#" >Sort</a></span>
         </p>
 
         <div class="container">

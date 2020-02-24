@@ -33,5 +33,16 @@ class BookController extends Controller
 
     }
 
+    public function edit($id) {
+        $book = Book::find($id);
+        return response()->json($book);
+    }
+
+    public function update($id, Request $request) {
+        $book = Book::find($id);
+        $book->update($request->all());
+       
+        return response()->json('Object updated successfully.');
+    }
 
 }
