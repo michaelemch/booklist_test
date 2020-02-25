@@ -36,9 +36,9 @@ export default {
             .get('http://54.172.242.15/api/books')
             .then( response => { 
                 this.booklist = response.data; 
+                this.booklist = this.booklist.sort( function(a,b) { return a.order - b.order; });
+                console.log(this.booklist);
             });
-            this.booklist = this.booklist.sort( function(a,b) { return a.order - b.order; });
-            console.log(this.booklist);
     },   
     methods: {
         before_move: function(evt) {
@@ -53,7 +53,7 @@ export default {
             console.log(this.booklist);
             this.update_order();
             console.log(this.booklist);
-            // this.save_all() 
+            this.save_all() 
 
         },
         update_order() {
@@ -78,7 +78,7 @@ export default {
             console.log(this.booklist);
             this.update_order();
             console.log(this.booklist);
-            // this.save_all()
+            this.save_all()
         },
         save_all() {
             const post_data = {

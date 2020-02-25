@@ -2039,9 +2039,10 @@ __webpack_require__.r(__webpack_exports__);
 
     this.axios.get('http://54.172.242.15/api/books').then(function (response) {
       _this.booklist = response.data;
-    });
-    this.booklist = this.booklist.sort(function (a, b) {
-      return a.order - b.order;
+      _this.booklist = _this.booklist.sort(function (a, b) {
+        return a.order - b.order;
+      });
+      console.log(_this.booklist);
     });
   },
   methods: {
@@ -2056,7 +2057,8 @@ __webpack_require__.r(__webpack_exports__);
       this.booklist.splice(evt.newIndex, 0, b[0]);
       console.log(this.booklist);
       this.update_order();
-      console.log(this.booklist); // this.save_all() 
+      console.log(this.booklist);
+      this.save_all();
     },
     update_order: function update_order() {
       this.booklist = this.booklist.map(function (book, index) {
@@ -2083,7 +2085,8 @@ __webpack_require__.r(__webpack_exports__);
       });
       console.log(this.booklist);
       this.update_order();
-      console.log(this.booklist); // this.save_all()
+      console.log(this.booklist);
+      this.save_all();
     },
     save_all: function save_all() {
       var post_data = {

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use App\Book;
 
 class BookController extends Controller
@@ -39,6 +40,7 @@ class BookController extends Controller
     }
 
     public function update($id, Request $request) {
+        Log::debug($request);
         $book = Book::find($id);
         $book->update($request->all());
        
@@ -46,13 +48,13 @@ class BookController extends Controller
     }
 
     public function update_all(Request $request) {
+        Log::debug($request);
         foreach ($request->data as $data) {
-            $book = new Book([
-                'title' => $data["title"],
-                'author' => $data["author"],
-                'order' => $data["order"]
-            ]);
-            $book->update();
+            Log::debug($data);
+            $book = Book::find($data["id"]);
+            Log::debug($book);
+            $rc = $book->update($data);
+            Log::debug($rc);
         }
         return response()->json('Objects saved successfully.');
     }
