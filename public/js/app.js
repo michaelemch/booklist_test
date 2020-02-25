@@ -1934,7 +1934,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get('http://54.172.242.15/api/books').then(function (response) {
+    this.axios.get(this.$http_api + 'books').then(function (response) {
       _this.booklist = response.data;
     });
   },
@@ -1950,7 +1950,7 @@ __webpack_require__.r(__webpack_exports__);
         })) + 1;
       }
 
-      this.axios.post('http://54.172.242.15/api/add_book', this.book).then(function (response) {
+      this.axios.post(this.$http_api + 'add_book', this.book).then(function (response) {
         return _this2.$router.push({
           name: 'booklist'
         });
@@ -2037,7 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get('http://54.172.242.15/api/books').then(function (response) {
+    this.axios.get(this.$http_api + 'books').then(function (response) {
       _this.booklist = response.data;
       _this.booklist = _this.booklist.sort(function (a, b) {
         return a.order - b.order;
@@ -2069,7 +2069,7 @@ __webpack_require__.r(__webpack_exports__);
     delete_book: function delete_book(id) {
       var _this2 = this;
 
-      this.axios["delete"]("http://54.172.242.15/api/delete_book/".concat(id)).then(function (response) {
+      this.axios["delete"](this.$http_api + "delete_book/".concat(id)).then(function (response) {
         var i = _this2.booklist.map(function (item) {
           return item.id;
         }).indexOf(id);
@@ -2092,7 +2092,7 @@ __webpack_require__.r(__webpack_exports__);
       var post_data = {
         data: this.booklist
       };
-      this.axios.post('http://54.172.242.15/api/update_all', post_data).then(function (response) {
+      this.axios.post(this.$http_api + 'update_all', post_data).then(function (response) {
         console.log("updated booklist");
       });
     }
@@ -2135,15 +2135,16 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get("http://54.174.111.201/api/edit_book/".concat(this.$route.params.id)).then(function (response) {
+    this.axios.get(this.$http_api + "edit_book/".concat(this.$route.params.id)).then(function (response) {
       _this.book = response.data;
+      console.log(_this.$http_api);
     });
   },
   methods: {
     update_book: function update_book() {
       var _this2 = this;
 
-      this.axios.post("http://54.172.242.15/api/update_book/".concat(this.$route.params.id), this.book).then(function (response) {
+      this.axios.post(this.$http_api + "update_book/".concat(this.$route.params.id), this.book).then(function (response) {
         return _this2.$router.push({
           name: 'booklist'
         });
@@ -42202,15 +42203,13 @@ module.exports = function(module) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
-/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
-/* harmony import */ var _components_Booklist__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Booklist */ "./resources/js/components/Booklist.vue");
-/* harmony import */ var _components_Add__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Add */ "./resources/js/components/Add.vue");
-/* harmony import */ var _components_Edit__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/Edit */ "./resources/js/components/Edit.vue");
+/* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-axios */ "./node_modules/vue-axios/dist/vue-axios.min.js");
+/* harmony import */ var vue_axios__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vue_axios__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _components_App__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./components/App */ "./resources/js/components/App.vue");
+/* harmony import */ var _components_Booklist__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/Booklist */ "./resources/js/components/Booklist.vue");
+/* harmony import */ var _components_Add__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/Add */ "./resources/js/components/Add.vue");
+/* harmony import */ var _components_Edit__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/Edit */ "./resources/js/components/Edit.vue");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -42219,6 +42218,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+Vue.prototype.$http_api = 'http://54.172.242.15/api/';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -42235,36 +42235,36 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+//import Vue from 'vue'
+
+
+
+Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
+Vue.use(vue_axios__WEBPACK_IMPORTED_MODULE_1___default.a, axios);
 
 
 
 
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
-vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_2___default.a, axios);
-
-
-
-
-var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
+var router = new vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]({
   mode: 'history',
   routes: [{
     path: '/',
     name: 'booklist',
-    component: _components_Booklist__WEBPACK_IMPORTED_MODULE_4__["default"]
+    component: _components_Booklist__WEBPACK_IMPORTED_MODULE_3__["default"]
   }, {
     path: '/add',
     name: 'add',
-    component: _components_Add__WEBPACK_IMPORTED_MODULE_5__["default"]
+    component: _components_Add__WEBPACK_IMPORTED_MODULE_4__["default"]
   }, {
     path: '/edit/:id',
     name: 'edit',
-    component: _components_Edit__WEBPACK_IMPORTED_MODULE_6__["default"]
+    component: _components_Edit__WEBPACK_IMPORTED_MODULE_5__["default"]
   }]
 });
-var app = new vue__WEBPACK_IMPORTED_MODULE_0___default.a({
+var app = new Vue({
   el: '#app',
   components: {
-    App: _components_App__WEBPACK_IMPORTED_MODULE_3__["default"]
+    App: _components_App__WEBPACK_IMPORTED_MODULE_2__["default"]
   },
   router: router
 });

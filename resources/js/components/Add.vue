@@ -24,7 +24,7 @@
         },
         created() {
             this.axios
-            .get('http://54.172.242.15/api/books')
+            .get(this.$http_api + 'books')
             .then( response => {
                 this.booklist = response.data;
             });
@@ -38,7 +38,7 @@
                     this.book.order = Math.max.apply(Math, this.booklist.map(function(o) { return o.id; })) + 1;
                 }
                 this.axios
-                    .post('http://54.172.242.15/api/add_book', this.book)
+                    .post(this.$http_api + 'add_book', this.book)
                     .then(response => (
                         this.$router.push( { name: 'booklist' } )
                     ))

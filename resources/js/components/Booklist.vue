@@ -33,7 +33,7 @@ export default {
     },
     created() {
         this.axios
-            .get('http://54.172.242.15/api/books')
+            .get(this.$http_api + 'books')
             .then( response => { 
                 this.booklist = response.data; 
                 this.booklist = this.booklist.sort( function(a,b) { return a.order - b.order; });
@@ -64,7 +64,7 @@ export default {
         },
         delete_book(id) {
             this.axios
-                .delete(`http://54.172.242.15/api/delete_book/${id}`)
+                .delete(this.$http_api + `delete_book/${id}`)
                 .then( response => {
                     let i = this.booklist.map(item => item.id).indexOf(id);
                     console.log("i is " + i);
@@ -84,7 +84,7 @@ export default {
             const post_data = {
                 data: this.booklist
             }
-            this.axios.post('http://54.172.242.15/api/update_all', post_data).then( response => {
+            this.axios.post(this.$http_api + 'update_all', post_data).then( response => {
                 console.log("updated booklist");
             })
         }

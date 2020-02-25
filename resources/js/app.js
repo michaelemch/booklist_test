@@ -8,6 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+Vue.prototype.$http_api = 'http://54.172.242.15/api/';
 
 /**
  * The following block of code may be used to automatically register your
@@ -28,7 +29,7 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import Vue from 'vue'
+//import Vue from 'vue'
 import VueRouter from 'vue-router'
 import VueAxios from 'vue-axios'
 
