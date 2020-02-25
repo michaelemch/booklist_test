@@ -5,7 +5,6 @@
         <p class="pl-5">
             <router-link :to="{ name: 'booklist' }">Home</router-link> 
             <span class="pl-5"><router-link :to="{ name: 'add' }">Add Book</router-link></span>
-            <span class="pl-5"><a href="#" >Sort</a></span>
         </p>
 
         <div class="container">

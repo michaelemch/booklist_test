@@ -45,4 +45,15 @@ class BookController extends Controller
         return response()->json('Object updated successfully.');
     }
 
+    public function update_all(Request $request) {
+        foreach ($request->data as $data) {
+            $book = new Book([
+                'title' => $data["title"],
+                'author' => $data["author"],
+                'order' => $data["order"]
+            ]);
+            $book->update();
+        }
+        return response()->json('Objects saved successfully.');
+    }
 }

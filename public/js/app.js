@@ -1927,21 +1927,37 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
-      book: {}
+      book: {},
+      booklist: []
     };
+  },
+  created: function created() {
+    var _this = this;
+
+    this.axios.get('http://54.172.242.15/api/books').then(function (response) {
+      _this.booklist = response.data;
+    });
   },
   methods: {
     add_book: function add_book() {
-      var _this = this;
+      var _this2 = this;
 
-      this.book.order = 0, this.axios.post('http://54.174.111.201/api/add_book', this.book).then(function (response) {
-        return _this.$router.push({
+      if (this.booklist.length == 0) {
+        this.book.order = 1;
+      } else {
+        this.book.order = Math.max.apply(Math, this.booklist.map(function (o) {
+          return o.id;
+        })) + 1;
+      }
+
+      this.axios.post('http://54.172.242.15/api/add_book', this.book).then(function (response) {
+        return _this2.$router.push({
           name: 'booklist'
         });
       })["catch"](function (error) {
         return console.log(error);
       })["finally"](function () {
-        return _this.loading = false;
+        return _this2.loading = false;
       });
     }
   }
@@ -1958,7 +1974,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -2022,15 +2037,37 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     var _this = this;
 
-    this.axios.get('http://54.174.111.201/api/books').then(function (response) {
+    this.axios.get('http://54.172.242.15/api/books').then(function (response) {
       _this.booklist = response.data;
+    });
+    this.booklist = this.booklist.sort(function (a, b) {
+      return a.order - b.order;
     });
   },
   methods: {
+    before_move: function before_move(evt) {
+      console.log("before move...");
+    },
+    after_move: function after_move(evt) {
+      console.log(evt);
+      console.log(this.booklist);
+      console.log("old index: " + evt.oldIndex + " new index: " + evt.newIndex);
+      var b = this.booklist.splice(evt.oldIndex, 1);
+      this.booklist.splice(evt.newIndex, 0, b[0]);
+      console.log(this.booklist);
+      this.update_order();
+      console.log(this.booklist); // this.save_all() 
+    },
+    update_order: function update_order() {
+      this.booklist = this.booklist.map(function (book, index) {
+        book.order = index;
+        return book;
+      });
+    },
     delete_book: function delete_book(id) {
       var _this2 = this;
 
-      this.axios["delete"]("http://54.174.111.201/api/delete_book/".concat(id)).then(function (response) {
+      this.axios["delete"]("http://54.172.242.15/api/delete_book/".concat(id)).then(function (response) {
         var i = _this2.booklist.map(function (item) {
           return item.id;
         }).indexOf(id);
@@ -2038,6 +2075,22 @@ __webpack_require__.r(__webpack_exports__);
         console.log("i is " + i);
 
         _this2.booklist.splice(i, 1);
+      });
+    },
+    sort_booklist: function sort_booklist() {
+      this.booklist = this.booklist.sort(function (a, b) {
+        return a.title.localeCompare(b.title);
+      });
+      console.log(this.booklist);
+      this.update_order();
+      console.log(this.booklist); // this.save_all()
+    },
+    save_all: function save_all() {
+      var post_data = {
+        data: this.booklist
+      };
+      this.axios.post('http://54.172.242.15/api/update_all', post_data).then(function (response) {
+        console.log("updated booklist");
       });
     }
   }
@@ -2087,7 +2140,7 @@ __webpack_require__.r(__webpack_exports__);
     update_book: function update_book() {
       var _this2 = this;
 
-      this.book.order = 0, this.axios.post("http://54.174.111.201/api/update_book/".concat(this.$route.params.id), this.book).then(function (response) {
+      this.axios.post("http://54.172.242.15/api/update_book/".concat(this.$route.params.id), this.book).then(function (response) {
         return _this2.$router.push({
           name: 'booklist'
         });
@@ -23544,9 +23597,7 @@ var render = function() {
             ])
           ],
           1
-        ),
-        _vm._v(" "),
-        _vm._m(0)
+        )
       ],
       1
     ),
@@ -23554,16 +23605,7 @@ var render = function() {
     _c("div", { staticClass: "container" }, [_c("router-view")], 1)
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("span", { staticClass: "pl-5" }, [
-      _c("a", { attrs: { href: "#" } }, [_vm._v("Sort")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -23590,12 +23632,44 @@ var render = function() {
       "table",
       { staticClass: "table table-bordered table-striped" },
       [
-        _vm._m(0),
+        _c("thead", [
+          _c("tr", [
+            _c(
+              "th",
+              {
+                on: {
+                  click: function($event) {
+                    return _vm.sort_booklist()
+                  }
+                }
+              },
+              [
+                _vm._v("Book"),
+                _c(
+                  "span",
+                  {
+                    staticStyle: {
+                      float: "right",
+                      "font-weight": "normal",
+                      color: "#007bff"
+                    }
+                  },
+                  [_vm._v("sort")]
+                )
+              ]
+            ),
+            _vm._v(" "),
+            _c("th", [_vm._v("Edit")]),
+            _vm._v(" "),
+            _c("th", [_vm._v("Delete")])
+          ])
+        ]),
         _vm._v(" "),
         _c(
           "draggable",
           {
-            attrs: { element: "tbody" },
+            attrs: { element: "tbody", move: _vm.before_move },
+            on: { end: _vm.after_move },
             model: {
               value: _vm.book,
               callback: function($$v) {
@@ -23659,22 +23733,7 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", [
-        _c("th", [_vm._v("Book")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Edit")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Delete")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

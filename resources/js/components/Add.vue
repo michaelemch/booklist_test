@@ -18,14 +18,27 @@
     export default {
         data() {
             return {
-                book: {}
+                book: {},
+                booklist: []
             }
+        },
+        created() {
+            this.axios
+            .get('http://54.172.242.15/api/books')
+            .then( response => {
+                this.booklist = response.data;
+            });
         },
         methods: {
             add_book() {
-                this.book.order = 0,
+                if (this.booklist.length == 0) {
+                    this.book.order = 1;
+                }
+                else {
+                    this.book.order = Math.max.apply(Math, this.booklist.map(function(o) { return o.id; })) + 1;
+                }
                 this.axios
-                    .post('http://54.174.111.201/api/add_book', this.book)
+                    .post('http://54.172.242.15/api/add_book', this.book)
                     .then(response => (
                         this.$router.push( { name: 'booklist' } )
                     ))
