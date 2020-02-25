@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "33b658bb-f7b8-4f21-8271-d187d43fbf65",
+		"name": "booklist",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "delete book",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://54.172.242.15/api/delete_book/20",
+					"protocol": "http",
+					"host": [
+						"54",
+						"172",
+						"242",
+						"15"
+					],
+					"path": [
+						"api",
+						"delete_book",
+						"20"
+					]
+				},
+				"description": "get book list"
+			},
+			"response": []
+		},
+		{
+			"name": "get book list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.172.242.15/api/books",
+					"protocol": "http",
+					"host": [
+						"54",
+						"172",
+						"242",
+						"15"
+					],
+					"path": [
+						"api",
+						"books"
+					]
+				},
+				"description": "book list"
+			},
+			"response": []
+		},
+		{
+			"name": "edit book",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://54.174.111.201/api/edit_book/6",
+					"protocol": "http",
+					"host": [
+						"54",
+						"174",
+						"111",
+						"201"
+					],
+					"path": [
+						"api",
+						"edit_book",
+						"6"
+					]
+				},
+				"description": "get list of books"
+			},
+			"response": []
+		},
+		{
+			"name": "update book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "The Hobbit",
+							"type": "text"
+						},
+						{
+							"key": "Author",
+							"value": "J.R.R. Tolkein",
+							"type": "text"
+						},
+						{
+							"key": "Order",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://54.174.111.201/api/update_book/6",
+					"protocol": "http",
+					"host": [
+						"54",
+						"174",
+						"111",
+						"201"
+					],
+					"path": [
+						"api",
+						"update_book",
+						"6"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "add a book",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "title",
+							"value": "The hobbit",
+							"type": "text"
+						},
+						{
+							"key": "author",
+							"value": "J.R.R. Tolkein",
+							"type": "text"
+						},
+						{
+							"key": "order",
+							"value": "10",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://54.174.111.201/api/add_book",
+					"protocol": "http",
+					"host": [
+						"54",
+						"174",
+						"111",
+						"201"
+					],
+					"path": [
+						"api",
+						"add_book"
+					]
+				},
+				"description": "add a book"
+			},
+			"response": []
+		},
+		{
+			"name": "update all books",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{ data: [\r\n    {\r\n        \"id\": 61,\r\n        \"title\": \"To Kill a Mocking Bird\",\r\n        \"author\": \"Harper Lee\",\r\n        \"order\": 1,\r\n        \"created_at\": \"2020-02-24 21:18:41\",\r\n        \"updated_at\": \"2020-02-24 21:18:41\"\r\n    },\r\n    {\r\n        \"id\": 62,\r\n        \"title\": \"Pride and Predjudice\",\r\n        \"author\": \"Jane Austen\",\r\n        \"order\": 62,\r\n        \"created_at\": \"2020-02-24 21:18:59\",\r\n        \"updated_at\": \"2020-02-24 21:18:59\"\r\n    },\r\n    {\r\n        \"id\": 63,\r\n        \"title\": \"1984\",\r\n        \"author\": \"George Orwell\",\r\n        \"order\": 63,\r\n        \"created_at\": \"2020-02-24 21:19:10\",\r\n        \"updated_at\": \"2020-02-24 21:19:10\"\r\n    },\r\n    {\r\n        \"id\": 64,\r\n        \"title\": \"Little Women\",\r\n        \"author\": \"Lousia May Alcott\",\r\n        \"order\": 64,\r\n        \"created_at\": \"2020-02-24 21:19:33\",\r\n        \"updated_at\": \"2020-02-24 21:19:33\"\r\n    },\r\n    {\r\n        \"id\": 65,\r\n        \"title\": \"Jane Eyre\",\r\n        \"author\": \"Charlotte Brontë\",\r\n        \"order\": 65,\r\n        \"created_at\": \"2020-02-24 21:20:01\",\r\n        \"updated_at\": \"2020-02-24 21:20:01\"\r\n    },\r\n    {\r\n        \"id\": 66,\r\n        \"title\": \"The Great Gatsby\",\r\n        \"author\": \"F. Scott Fitzgerald\",\r\n        \"order\": 66,\r\n        \"created_at\": \"2020-02-24 21:20:24\",\r\n        \"updated_at\": \"2020-02-24 21:20:24\"\r\n    },\r\n    {\r\n        \"id\": 67,\r\n        \"title\": \"Moby Dick or the Whale\",\r\n        \"author\": \"Herman Melville\",\r\n        \"order\": 67,\r\n        \"created_at\": \"2020-02-24 21:20:49\",\r\n        \"updated_at\": \"2020-02-24 21:20:49\"\r\n    },\r\n    {\r\n        \"id\": 68,\r\n        \"title\": \"Frankenstein\",\r\n        \"author\": \"Mary Shelley\",\r\n        \"order\": 68,\r\n        \"created_at\": \"2020-02-24 21:21:11\",\r\n        \"updated_at\": \"2020-02-24 21:21:11\"\r\n    },\r\n    {\r\n        \"id\": 69,\r\n        \"title\": \"Adventures of Huckleberry Finn\",\r\n        \"author\": \"Mark Twain\",\r\n        \"order\": 69,\r\n        \"created_at\": \"2020-02-24 21:21:36\",\r\n        \"updated_at\": \"2020-02-24 21:21:36\"\r\n    },\r\n    {\r\n        \"id\": 70,\r\n        \"title\": \"The Catcher in the Rye\",\r\n        \"author\": \"J. D. Salinger\",\r\n        \"order\": 70,\r\n        \"created_at\": \"2020-02-24 21:22:08\",\r\n        \"updated_at\": \"2020-02-24 21:22:08\"\r\n    }\r\n]}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://54.172.242.15/api/update_all",
+					"protocol": "http",
+					"host": [
+						"54",
+						"172",
+						"242",
+						"15"
+					],
+					"path": [
+						"api",
+						"update_all"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
