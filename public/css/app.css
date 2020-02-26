@@ -10884,3 +10884,15 @@ a.text-dark:focus {
   }
 }
 
+body {
+  font-size: 12pt;
+}
+
+div {
+  font-size: 12pt;
+}
+
+input {
+  font-size: 12pt;
+}
+

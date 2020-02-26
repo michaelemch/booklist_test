@@ -3,16 +3,16 @@
         <table class="table table-bordered table-striped">
         <thead>
         <tr>
-            <th @click="sort_booklist()">Book<span style="float: right; font-weight: normal; color: #007bff">sort</span></th>
+            <th @click="sort_booklist()">Book<span style="float: right; font-weight: normal; color: #007bff; cursor: pointer;">sort<span class="glyphicon glyphicon-sort-by-alphabet"></span></span></th>
             <th>Edit</th>
             <th>Delete</th>
         </tr>
         </thead>
         <draggable v-model="book" :element="'tbody'" :move="before_move" @end="after_move">
         <tr v-for="book in booklist" :key="book.id">
-            <td><b>{{ book.title }}</b> <i>by</i> {{ book.author }}</td>
-            <td><router-link :to="{name: 'edit', params: { id: book.id }}"><a href="#" @click="">edit</a></router-link></td>
-            <td><a href="#" @click="delete_book(book.id)">delete</a></td>
+            <td><b>{{ book.title }}</b> <i>by</i> {{ book.author }}<span style="float: right" class="glyphicon glyphicon-move"></span> </td>
+            <td><router-link :to="{name: 'edit', params: { id: book.id }}"><span class="glyphicon glyphicon-pencil">&nbsp;</span></router-link></td>
+            <td><span style="color: red; cursor: pointer;" @click="delete_book(book.id)" class="glyphicon glyphicon-remove">&nbsp;</span></td>
         </tr>
         </draggable>
         </table>
@@ -34,12 +34,12 @@ export default {
     created() {
         this.axios
             .get(this.$http_api + 'books')
-            .then( response => { 
-                this.booklist = response.data; 
+            .then( response => {
+                this.booklist = response.data;
                 this.booklist = this.booklist.sort( function(a,b) { return a.order - b.order; });
                 console.log(this.booklist);
             });
-    },   
+    },
     methods: {
         before_move: function(evt) {
             console.log("before move...");
@@ -53,7 +53,7 @@ export default {
             console.log(this.booklist);
             this.update_order();
             console.log(this.booklist);
-            this.save_all() 
+            this.save_all()
 
         },
         update_order() {
@@ -92,5 +92,3 @@ export default {
 }
 
 </script>
-
-

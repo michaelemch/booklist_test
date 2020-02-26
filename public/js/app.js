@@ -23486,7 +23486,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticStyle: { "font-size": "12pt" } }, [
     _c(
       "form",
       {
@@ -23511,6 +23511,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            staticStyle: { "font-size": "12pt" },
             attrs: { type: "text" },
             domProps: { value: _vm.book.title },
             on: {
@@ -23537,6 +23538,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            staticStyle: { "font-size": "12pt" },
             attrs: { type: "text" },
             domProps: { value: _vm.book.author },
             on: {
@@ -23552,7 +23554,11 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn btn-primary",
+            staticStyle: { "font-size": "12pt" },
+            attrs: { type: "submit" }
+          },
           [_vm._v("Add")]
         )
       ]
@@ -23647,20 +23653,7 @@ var render = function() {
                   }
                 }
               },
-              [
-                _vm._v("Book"),
-                _c(
-                  "span",
-                  {
-                    staticStyle: {
-                      float: "right",
-                      "font-weight": "normal",
-                      color: "#007bff"
-                    }
-                  },
-                  [_vm._v("sort")]
-                )
-              ]
+              [_vm._v("Book"), _vm._m(0)]
             ),
             _vm._v(" "),
             _c("th", [_vm._v("Edit")]),
@@ -23688,7 +23681,11 @@ var render = function() {
                 _c("b", [_vm._v(_vm._s(book.title))]),
                 _vm._v(" "),
                 _c("i", [_vm._v("by")]),
-                _vm._v(" " + _vm._s(book.author))
+                _vm._v(" " + _vm._s(book.author)),
+                _c("span", {
+                  staticClass: "glyphicon glyphicon-move",
+                  staticStyle: { float: "right" }
+                })
               ]),
               _vm._v(" "),
               _c(
@@ -23701,12 +23698,9 @@ var render = function() {
                     },
                     [
                       _c(
-                        "a",
-                        {
-                          attrs: { href: "#" },
-                          on: { click: function($event) {} }
-                        },
-                        [_vm._v("edit")]
+                        "span",
+                        { staticClass: "glyphicon glyphicon-pencil" },
+                        [_vm._v(" ")]
                       )
                     ]
                   )
@@ -23716,16 +23710,17 @@ var render = function() {
               _vm._v(" "),
               _c("td", [
                 _c(
-                  "a",
+                  "span",
                   {
-                    attrs: { href: "#" },
+                    staticClass: "glyphicon glyphicon-remove",
+                    staticStyle: { color: "red", cursor: "pointer" },
                     on: {
                       click: function($event) {
                         return _vm.delete_book(book.id)
                       }
                     }
                   },
-                  [_vm._v("delete")]
+                  [_vm._v(" ")]
                 )
               ])
             ])
@@ -23737,7 +23732,28 @@ var render = function() {
     )
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "span",
+      {
+        staticStyle: {
+          float: "right",
+          "font-weight": "normal",
+          color: "#007bff",
+          cursor: "pointer"
+        }
+      },
+      [
+        _vm._v("sort"),
+        _c("span", { staticClass: "glyphicon glyphicon-sort-by-alphabet" })
+      ]
+    )
+  }
+]
 render._withStripped = true
 
 
@@ -23759,7 +23775,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
+  return _c("div", { staticStyle: { "font-size": "12pt" } }, [
     _c(
       "form",
       {
@@ -23784,6 +23800,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            staticStyle: { "font-size": "12pt" },
             attrs: { type: "text" },
             domProps: { value: _vm.book.title },
             on: {
@@ -23810,6 +23827,7 @@ var render = function() {
               }
             ],
             staticClass: "form-control",
+            staticStyle: { "font-size": "12pt" },
             attrs: { type: "text" },
             domProps: { value: _vm.book.author },
             on: {
@@ -23825,7 +23843,11 @@ var render = function() {
         _vm._v(" "),
         _c(
           "button",
-          { staticClass: "btn btn-primary", attrs: { type: "submit" } },
+          {
+            staticClass: "btn btn-primary",
+            staticStyle: { "font-size": "12pt" },
+            attrs: { type: "submit" }
+          },
           [_vm._v("Update")]
         )
       ]
@@ -42218,7 +42240,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.prototype.$http_api = 'http://54.172.242.15/api/';
+Vue.prototype.$http_api = 'http://booklist.local/api/';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -42597,8 +42619,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /var/www/html/booklist/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /var/www/html/booklist/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\xampp\htdocs\laravel\booklist\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\booklist\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -1,15 +1,15 @@
 <template>
-<div>
+<div style="font-size: 12pt">
     <form @submit.prevent="add_book">
     <div class="form-group">
         <label>Title</label>
-        <input type="text" class="form-control" v-model="book.title" />
+        <input style="font-size: 12pt" type="text" class="form-control" v-model="book.title" />
     </div>
     <div class="form-group">
         <label>Author</label>
-        <input type="text" class="form-control" v-model="book.author" />
+        <input style="font-size: 12pt" type="text" class="form-control" v-model="book.author" />
     </div>
-    <button type="submit" class="btn btn-primary">Add</button>
+    <button style="font-size: 12pt" type="submit" class="btn btn-primary">Add</button>
     </form>
 </div>
 </template>
