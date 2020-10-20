@@ -1,9 +1,6 @@
 ## Booklist Project
 
-This is a coding assessment project for Booj / ReMax.
-
-This project is available at http://54.172.242.15/.
-
+A simple book list to demonstrate CRUD operations.
 
 ## About Project
 
