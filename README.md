@@ -1,6 +1,6 @@
 ## Booklist Project
 
-A simple book list to demonstrate CRUD operations.
+A simple book list demonstrating CRUD operations.
 
 ## About Project
 
