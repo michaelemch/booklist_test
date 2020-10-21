@@ -23590,6 +23590,7 @@ var render = function() {
   return _c("div", [
     _c("h1", { staticClass: "pl-5" }, [_vm._v("Reading List ")]),
     _vm._v(" "),
+    _vm._m(0),
     _c(
       "p",
       { staticClass: "pl-5" },
@@ -23615,7 +23616,21 @@ var render = function() {
     _c("div", { staticClass: "container" }, [_c("router-view")], 1)
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "pl-5" }, [
+      _c("br"),
+      _vm._v(
+        "This is a simple book list created to demonstrate CRUD operations in Laravel.  It uses VueJS and Bootstrap on the front-end."
+      ),
+      _c("br"),
+      _c("br")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -23656,9 +23671,9 @@ var render = function() {
               [_vm._v("Book"), _vm._m(0)]
             ),
             _vm._v(" "),
-            _c("th", [_vm._v("Edit")]),
+            _c("th", { attrs: { width: "5%" } }, [_vm._v("Edit")]),
             _vm._v(" "),
-            _c("th", [_vm._v("Delete")])
+            _c("th", { attrs: { width: "5%" } }, [_vm._v("Delete")])
           ])
         ]),
         _vm._v(" "),
@@ -42240,7 +42255,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.prototype.$http_api = 'http://booklist.local/api/';
+Vue.prototype.$http_api = 'http://booklist.ascent-technical.com/api/';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -42619,8 +42634,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\laravel\booklist\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\laravel\booklist\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/mcemch/work/booklist/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/mcemch/work/booklist/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

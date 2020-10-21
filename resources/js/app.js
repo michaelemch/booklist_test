@@ -8,7 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.prototype.$http_api = 'http://booklist.local/api/';
+Vue.prototype.$http_api = 'http://booklist.ascent-technical.com/api/';
 
 /**
  * The following block of code may be used to automatically register your

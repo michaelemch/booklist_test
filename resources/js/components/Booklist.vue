@@ -4,8 +4,8 @@
         <thead>
         <tr>
             <th @click="sort_booklist()">Book<span style="float: right; font-weight: normal; color: #007bff; cursor: pointer;">sort<span class="glyphicon glyphicon-sort-by-alphabet"></span></span></th>
-            <th>Edit</th>
-            <th>Delete</th>
+            <th width="5%">Edit</th>
+            <th width="5%">Delete</th>
         </tr>
         </thead>
         <draggable v-model="book" :element="'tbody'" :move="before_move" @end="after_move">
