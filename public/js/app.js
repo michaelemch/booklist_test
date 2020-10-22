@@ -23613,7 +23613,12 @@ var render = function() {
       1
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "container" }, [_c("router-view")], 1)
+    _c(
+      "div",
+      { staticClass: "pl-5", staticStyle: { width: "80%" } },
+      [_c("router-view")],
+      1
+    )
   ])
 }
 var staticRenderFns = [

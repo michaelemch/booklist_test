@@ -7,7 +7,7 @@
             <span class="pl-5"><router-link :to="{ name: 'add' }">Add Book</router-link></span>
         </p>
 
-        <div class="container">
+        <div class="pl-5" style="width: 80%">
             <router-view></router-view>
         </div>
     </div>
