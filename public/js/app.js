@@ -23629,7 +23629,7 @@ var staticRenderFns = [
     return _c("p", { staticClass: "pl-5" }, [
       _c("br"),
       _vm._v(
-        "This is a simple book list created to demonstrate CRUD operations in Laravel.  It uses VueJS and Bootstrap on the front-end."
+        "This is a simple book list created to demonstrate SPA and CRUD operations in Laravel.  It uses VueJS and Bootstrap on the front-end."
       ),
       _c("br"),
       _c("br")
@@ -42260,7 +42260,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
-Vue.prototype.$http_api = 'http://booklist.ascent-technical.com/api/';
+Vue.prototype.$http_api = 'http://at-booklist.herokuapp.com/api/';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
