@@ -8,7 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
-Vue.prototype.$http_api = 'http://booklist.ascent-technical.com/api/';
+Vue.prototype.$http_api = 'http://at-booklist.herokuapp.com/api/';
 
 /**
  * The following block of code may be used to automatically register your
